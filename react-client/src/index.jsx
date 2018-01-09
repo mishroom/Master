@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import $ from 'jquery';
 import List from './components/List.jsx';
+import Search from './components/Search.jsx';
 // import ProfilePage from './components/ProfilePage.jsx'
 
 class App extends React.Component {
@@ -46,6 +47,7 @@ class App extends React.Component {
 
   render () {
     return (<div>
+      <Search />
       <h1>Item List: {this.state.userProfile.name}</h1>
       <List items={this.state.items}/>
     </div>)
