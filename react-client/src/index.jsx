@@ -80,6 +80,7 @@ class App extends React.Component {
       return (
         <ProfilePage
           props="test"
+          fetch={this.fetch}
           changeView={this.changeView}
         />
       );
@@ -99,9 +100,9 @@ class App extends React.Component {
         <div className="selections">
         Test Pages:
           <select onChange={this.changeView}>
+            <option>Null</option>
             <option>Profile</option>
             <option>Book</option>
-            <option>Null</option>
           </select>
         </div>
 

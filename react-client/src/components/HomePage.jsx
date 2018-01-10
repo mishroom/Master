@@ -14,6 +14,7 @@ class HomePage extends React.Component {
   }
 
   componentDidMount() {
+  };
 
 
   getBestSellersBooks() {
@@ -30,6 +31,7 @@ class HomePage extends React.Component {
     }).fail(function(err) {
       throw err;
     });
+
 
   }
 
