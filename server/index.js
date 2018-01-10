@@ -29,6 +29,21 @@ app.get('/user/:username', (req, res) => {
   });
 });
 
+app.post('/user/:username', (req, res) => {
+  const { username } = req.params;
+  req.on('data', (chunk) => {
+    // db.createProfile(chunk, (err, data) => {
+    //   if(err) {
+    //     res.sendStatus(500);
+    //   } else {
+    //     res.end(data);
+    //   }
+    // });
+    console.log(chunk);
+    res.end();
+  });
+});
+
 app.get('/book/:isbn', (req, res) => {
   const { isbn } = req.params;
   db.findBook(isbn, (err, data) => {

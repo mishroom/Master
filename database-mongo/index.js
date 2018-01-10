@@ -147,6 +147,11 @@ const findProfile = (user, cb) => {
   User.find({ username: user }).exec(cb);
 };
 
+const createProfile = (user, cb) => {
+  const newProfile = new User(user);
+  newProfile.save().exec(cb);
+};
+
 const findBook = (book, cb) => {
   if (book.length === 10 || book.length === 13) {
     Book.find({ isbn: book }).exec(cb);
@@ -161,4 +166,5 @@ module.exports = {
   findUserReviews,
   findProfile,
   findBook,
+  createProfile,
 };
