@@ -147,9 +147,11 @@ const findProfile = (user, cb) => {
   User.find({ username: user }).exec(cb);
 };
 
-const createProfile = (user, cb) => {
-  const newProfile = new User(user);
-  newProfile.save().exec(cb);
+const createProfile = (user) => {
+          const newProfile = new User(user);
+          newProfile.save();
+
+
 };
 
 const findBook = (book, cb) => {

@@ -41,24 +41,21 @@ class ProfilePage extends React.Component {
   }
 
   handleSignup() {
-   // this.state = this.state.bind(this); 
     $.ajax({
       url: `/user/${this.state.username}`,
       type: 'POST',
-      data: {
+      data: JSON.stringify({
         name: this.state.name,
         username: this.state.username,
         password: this.state.password,
         reviewedBooks: [],
         favoriteBooks: [],
-      },
+      }),
       success: (data) => {
-        alert('User Account Created');
-        console.log('USER Account Created');
+        console.log(data);
       },
       error: (err) => {
         console.log('err', err);
-        alert('User Not Created');
       },
     });
   }
@@ -71,17 +68,17 @@ class ProfilePage extends React.Component {
       <label>
       Login
       </label>
-      <input type="text" value={this.username} onChange={this.onChange} />
-      <input type="text" value={this.password} onChange={this.onChange} />
+      <input type="text" value={this.username} onChange={this.onChange} placeholder="Username" />
+      <input type="password" value={this.password} onChange={this.onChange} placeholder="Password" />
       <button onClick={this.handleLogin} > Login </button>
       </div>
       <div className='signup'>
       <label>
       Signup
       </label>
-      <input type="text" value={this.name} onChange={this.saveName} />
-      <input type="text" value={this.username} onChange={this.saveUsername} />
-      <input type="text" value={this.password} onChange={this.savePassword} />
+      <input type="text" value={this.name} onChange={this.saveName} placeholder="Name" />
+      <input type="text" value={this.username} onChange={this.saveUsername} placeholder="Username" />
+      <input type="password" value={this.password} onChange={this.savePassword} placeholder="Password" />
       <button onClick={this.handleSignup} > Signup </button>
       </div>
       </div>

@@ -30,16 +30,21 @@ app.get('/user/:username', (req, res) => {
 });
 
 app.post('/user/:username', (req, res) => {
-  const { username } = req.params;
   req.on('data', (chunk) => {
-    // db.createProfile(chunk, (err, data) => {
-    //   if(err) {
-    //     res.sendStatus(500);
-    //   } else {
-    //     res.end(data);
-    //   }
-    // });
-    console.log(chunk);
+    const userData = JSON.parse(chunk.toString());
+    // check if exists in database
+    db.findProfile(userData.username, (err, data) => {
+      if(err) {
+        console.log("ERR", err);
+      } else {
+        console.log(data);
+        if(!data.length) {
+          db.createProfile(userData);
+        }
+      }
+    });
+
+    //if not, add it
     res.end();
   });
 });
