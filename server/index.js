@@ -40,12 +40,11 @@ app.post('/user/:username', (req, res) => {
         console.log(data);
         if(!data.length) {
           db.createProfile(userData);
-        }
+          res.json('profile created');
+        };
+        res.json('err username already exists');
       }
     });
-
-    //if not, add it
-    res.end();
   });
 });
 
