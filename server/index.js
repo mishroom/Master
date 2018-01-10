@@ -40,9 +40,9 @@ app.post('/user/:username', (req, res) => {
         console.log(data);
         if(!data.length) {
           db.createProfile(userData);
-          res.json('profile created');
+          res.json('success');
         };
-        res.json('err username already exists');
+        res.json('error');
       }
     });
   });

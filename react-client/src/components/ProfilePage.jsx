@@ -52,7 +52,11 @@ class ProfilePage extends React.Component {
         favoriteBooks: [],
       }),
       success: (data) => {
-        console.log(data);
+        if (data === 'success') {
+          alert('User Profile Created! Login to continue');
+        } else{
+          alert('Oh no! That username is already taken. Try again!');
+        }
       },
       error: (err) => {
         console.log('err', err);
