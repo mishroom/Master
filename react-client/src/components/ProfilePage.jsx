@@ -9,13 +9,13 @@ class ProfilePage extends React.Component {
       username: '',
       password: '',
       name: '',
+      loginSuccess: false,
     };
     this.handleLogin = this.handleLogin.bind(this);
     this.handleSignup = this.handleSignup.bind(this);
     this.saveName = this.saveName.bind(this);
     this.saveUsername = this.saveUsername.bind(this);
     this.savePassword = this.savePassword.bind(this);
-
   }
 
   componentDidMount() {
@@ -52,7 +52,8 @@ class ProfilePage extends React.Component {
         favoriteBooks: [],
       }),
       success: (data) => {
-        if (data === 'success') {
+        console.log(data);
+        if (data.type === 'success') {
           alert('User Profile Created! Login to continue');
         } else{
           alert('Oh no! That username is already taken. Try again!');

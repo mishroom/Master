@@ -32,17 +32,26 @@ app.get('/user/:username', (req, res) => {
 app.post('/user/:username', (req, res) => {
   req.on('data', (chunk) => {
     const userData = JSON.parse(chunk.toString());
+    const response = {
+      type: '',
+      data: {},
+    };
     // check if exists in database
     db.findProfile(userData.username, (err, data) => {
       if(err) {
         console.log("ERR", err);
       } else {
-        console.log(data);
-        if(!data.length) {
+    
+        if (!data.length) {
           db.createProfile(userData);
-          res.json('success');
-        };
-        res.json('error');
+          // figure out how to callback this
+          response.type = 'success';
+          response.data = userData;
+          res.json(response);
+        } else {
+          response.type = 'error';
+          res.json(response);
+        }
       }
     });
   });
