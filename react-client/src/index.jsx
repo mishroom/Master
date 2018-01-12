@@ -20,7 +20,7 @@ class App extends React.Component {
     this.submitReview = this.submitReview.bind(this);
   }
   //
-  componentDidMount() {
+  //componentDidMount() {
     // example load user by userName
     // this.fetch('user', 'dust_off', (user) => {
     //   this.setState({
