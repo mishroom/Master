@@ -44,14 +44,12 @@ class ProfilePage extends React.Component {
       }),
       success: (data) => {
         if (data.type === 'success') {
-          alert('Login Success');
           this.setState({ userProfile: data.userProfile });
         } else if (data.type === 'wrong password') {
           alert('Wrong Password: Try Again');
         } else {
           alert ('Invalid username: Try Again');
         }
-        console.log(this.state.userProfile);
         this.renderView();
       },
       error: (err) => {
@@ -91,11 +89,15 @@ class ProfilePage extends React.Component {
   }
 
   changePassword() {
+    // render a text box
+    // go to server > db
+    // edit pw field in db
+    // return new user object
+    // rerender page
 
   }
 
   renderView() {
-    console.log(this.state.userProfile.length);
     if (this.state.userProfile.length === 0) {
       return (
         <div>

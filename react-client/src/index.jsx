@@ -19,6 +19,14 @@ class App extends React.Component {
     this.changeView = this.changeView.bind(this);
     this.submitReview = this.submitReview.bind(this);
   }
+  //
+  componentDidMount() {
+    // example load user by userName
+    // this.fetch('user', 'dust_off', (user) => {
+    //   this.setState({
+    //     userProfile: user,
+    //   });
+    // });
 
   componentDidMount() {
   }
