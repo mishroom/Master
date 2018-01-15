@@ -17,12 +17,12 @@ const searchBook = (book, cb) => {
       // console.log('here on line 20');// , response.data);
       const parseRes = convert.xml2json(response.data, { compact: true, spaces: 1 });
       const books = JSON.parse(parseRes).GoodreadsResponse.search.results.work;
-      let theBook = books;
-      if (books.length > 0) {
-        theBook = books[0];
-      }
+      //let theBook = books;
+      // if (books.length > 0) {
+      //   theBook = books;
+      // }
       // console.log('books');// , theBook);
-      cb(null, theBook);
+      cb(null, books);
     })
     .catch((error) => {
       // console.log('here on line 20');// , error);

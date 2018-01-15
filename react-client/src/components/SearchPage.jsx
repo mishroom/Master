@@ -15,14 +15,25 @@ const styles = theme => ({
 class SearchPage extends React.Component {
   constructor(props) {
     super(props);
+
+    this.state = {
+      searchResults: [],
+    };
   }
 
   render() {
+    this.props.fetch('search', this.props.searchedBook, (results) => {
+      this.setState({
+        searchResults: results,
+      });
+    });
+
     return (
       <div>
-      SEARCH PAGE WOOH
+      SEARCH PAGE WOOH <br />
+      { JSON.stringify(this.state.searchResults) }
       </div>
-      );
+    );
   }
 }
 

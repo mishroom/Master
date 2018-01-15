@@ -70,9 +70,8 @@ class App extends React.Component {
       .then(response => console.log('Success:', response));
   }
 
-  handleSearch() {
-    this.setState({ view: 'Search' });
-    console.log('IN INDEX.JSX');
+  handleSearch(query) {
+    this.setState({ view: 'Search', searchedBook: query });
     this.renderView();
   }
 
@@ -98,6 +97,7 @@ class App extends React.Component {
         <SearchPage
           fetch={this.fetch}
           changeView={this.changeView}
+          searchedBook={this.state.searchedBook}
         />
       );
     }

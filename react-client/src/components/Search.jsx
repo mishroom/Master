@@ -42,7 +42,7 @@ class Search extends React.Component {
     //     selectedBook: book,
     //   });
     // });
-    this.props.handleSearch();
+    this.props.handleSearch(this.state.query);
   }
 
   render() {

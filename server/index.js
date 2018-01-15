@@ -119,11 +119,13 @@ app.get('/search/:title', (req, res) => {
     if (err) {
       res.sendStatus(500);
     } else {
-      const parsResults = searchResults.map((book) => {
-        const cleanBook = organizeBookData(book);
-        return organizeBookData(book);
-      });
-      res.json(parsResults);
+      res.json(searchResults);
+      //res.json(organizeBookData(searchResults));
+      // const parsResults = searchResults.map((book) => {
+      //   const cleanBook = organizeBookData(book);
+      //   return organizeBookData(book);
+      // });
+      //res.json(parsResults);
     }
   });
 });
