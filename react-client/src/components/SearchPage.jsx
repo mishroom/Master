@@ -41,7 +41,7 @@ class SearchPage extends React.Component {
 
     return (
       <div>
-      SEARCH PAGE WOOH <br />
+      <h2>SEARCH RESULTS</h2> <br />
         {this.state.searchResults.map(book => (
           <BookCard book={this.createBook(book)} />))}
       </div>
