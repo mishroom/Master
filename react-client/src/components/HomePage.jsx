@@ -16,7 +16,7 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      books: [],
+      books: '',
       loading: true,
       view: this.props.view,
     };

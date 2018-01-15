@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 
+import SearchPage from './SearchPage.jsx';
+
 const styles = theme => ({
   button: {
     margin: theme.spacing.unit,
@@ -35,11 +37,12 @@ class Search extends React.Component {
 
   handleSubmit() {
     console.log('clicked', this.state.query);
-    this.props.fetch('search', this.state.query, (book) => {
-      this.setState({
-        selectedBook: book,
-      });
-    });
+    // this.props.fetch('search', this.state.query, (book) => {
+    //   this.setState({
+    //     selectedBook: book,
+    //   });
+    // });
+    this.props.handleSearch();
   }
 
   render() {

@@ -6,6 +6,7 @@ import BookPage from './components/BookPage.jsx';
 import HomePage from './components/HomePage.jsx';
 import Search from './components/Search.jsx';
 import NavBar from './components/NavBar.jsx';
+import SearchPage from './components/SearchPage.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -18,6 +19,7 @@ class App extends React.Component {
     };
     this.changeView = this.changeView.bind(this);
     this.submitReview = this.submitReview.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
   //
   //componentDidMount() {
@@ -68,6 +70,12 @@ class App extends React.Component {
       .then(response => console.log('Success:', response));
   }
 
+  handleSearch() {
+    this.setState({ view: 'Search' });
+    console.log('IN INDEX.JSX');
+    this.renderView();
+  }
+
   renderView() {
     if (this.state.view === 'Book') {
       return (
@@ -85,6 +93,13 @@ class App extends React.Component {
           changeView={this.changeView}
         />
       );
+    } else if (this.state.view === 'Search') {
+      return (
+        <SearchPage
+          fetch={this.fetch}
+          changeView={this.changeView}
+        />
+      );
     }
     return (
       <HomePage
@@ -98,7 +113,7 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <NavBar changeView={this.changeView} fetch={this.fetch} />
+        <NavBar changeView={this.changeView} fetch={this.fetch} handleSearch={this.handleSearch} />
         <div className="main-view">
           {this.renderView()}
         </div>
