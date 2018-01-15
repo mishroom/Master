@@ -19,6 +19,16 @@ class SearchPage extends React.Component {
     this.state = {
       searchResults: [],
     };
+
+    this.createBook = this.createBook.bind(this);
+  }
+
+  createBook(searchResult) {
+    let book = {};
+    book.title = searchResult.best_book.title._text;
+    book.author = searchResult.best_book.author.name._text;
+    book.imageURL = searchResult.best_book.image_url._text;
+    return book;
   }
 
   render() {
@@ -27,11 +37,13 @@ class SearchPage extends React.Component {
         searchResults: results,
       });
     });
+    // console.log(this.state.searchResults);
 
     return (
       <div>
       SEARCH PAGE WOOH <br />
-      { JSON.stringify(this.state.searchResults) }
+        {this.state.searchResults.map(book => (
+          <BookCard book={this.createBook(book)} />))}
       </div>
     );
   }
