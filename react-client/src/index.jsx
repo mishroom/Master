@@ -71,9 +71,19 @@ class App extends React.Component {
   }
 
   handleSearch(query) {
+    //do the fetch here
+    //pass that data into the search page
+
+
     this.setState({ view: 'Search', searchedBook: query }, function () {
       console.log(this.state.searchedBook);
-      this.renderView();
+      this.fetch('search', this.state.searchedBook, (results) => {
+        this.setState({
+          searchResults: results,
+        }, function () {
+          this.renderView();
+        });
+      });
     });
   }
 
@@ -100,6 +110,7 @@ class App extends React.Component {
           fetch={this.fetch}
           changeView={this.changeView}
           searchedBook={this.state.searchedBook}
+          searchResults={this.state.searchResults}
         />
       );
     }
